@@ -43,4 +43,9 @@ public class Bank {
             return "Error";
         }
     }
+    
+    public void transfer(double amount, Account from, Account to) {
+		from.withdraw(amount);
+		to.deposit(amount);
+	}
 }

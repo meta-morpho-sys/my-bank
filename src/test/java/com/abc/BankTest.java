@@ -52,7 +52,7 @@ public class BankTest {
     }
     
     @Test
-    public void transfer() {
+    public void testTransfer() {
     		Bank bank = new Bank();
     		Account checkingAccount = new Account(Account.CHECKING);
     		Account savingsAccount = new Account(Account.SAVINGS);
@@ -62,22 +62,10 @@ public class BankTest {
     		bank.addCustomer(klara);
     		
     		checkingAccount.deposit(1500.0);
-//    		bank.transfer(300.0, checkingAccount, savingsAccount);
-//    		
-//    		assertEquals(300.0, )
-//    		TODO complete the test after I have added the "balance"
+    		bank.transfer(300.0, checkingAccount, savingsAccount);
     		
-//    		1. Tell transfer() from which account to which account to transfer money
-//    		transfer(amount, fromAccount, toAccount)
-//    		2. Tell transfer() the amount 
-    		
-    		
-    		
-//    		assert that receiving account equals to (current balance + transfered amount)
-    		
-    		
-    		
-    			
+    		assertEquals(1200.0, checkingAccount.getBalance(), DOUBLE_DELTA);	
+    		assertEquals(300.0, savingsAccount.getBalance(), DOUBLE_DELTA);
     }
 
 }
