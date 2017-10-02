@@ -3,9 +3,11 @@ package com.abc;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 public class Account {
 
-    public static final int CHECKING = 0; // TODO Ask Alan about "enumerations" (Enum class) later on
+    public static final int CHECKING = 0; // TODO ask info about "enumerations" (Enum class) later on
     public static final int SAVINGS = 1;
     public static final int MAXI_SAVINGS = 2;
 
@@ -17,10 +19,6 @@ public class Account {
         this.transactions = new ArrayList<Transaction>();
     }
 
-    /**
-     * 
-     * @param amount
-     */
     public void deposit(double amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("amount must be greater than zero");
@@ -32,7 +30,9 @@ public class Account {
 	public void withdraw(double amount) {
 	    if (amount <= 0) {
 	        throw new IllegalArgumentException("amount must be greater than zero");
-	    } else {
+	    } else if (amount > getBalance() || getBalance() == 0.0) {
+			throw new RuntimeException("Insufficient balance");
+		} else {
 	        transactions.add(new Transaction(-amount));
 	    }
 	}
