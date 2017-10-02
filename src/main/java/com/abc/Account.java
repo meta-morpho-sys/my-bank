@@ -30,7 +30,7 @@ public class Account {
 	public void withdraw(double amount) {
 	    if (amount <= 0) {
 	        throw new IllegalArgumentException("amount must be greater than zero");
-	    } else if (amount > getBalance() || getBalance() == 0.0) {
+	    } else if (amount > getBalance()) {
 			throw new RuntimeException("Insufficient balance");
 		} else {
 	        transactions.add(new Transaction(-amount));
@@ -49,9 +49,7 @@ public class Account {
                     return amount * 0.001;
                 else
                     return 1 + (amount-1000) * 0.002;
-//            case SUPER_SAVINGS:
-//                if (amount <= 4000)
-//                    return 20;
+
             case MAXI_SAVINGS:
                 if (amount <= 1000)
                     return amount * 0.02;

@@ -1,0 +1,54 @@
+@startuml
+class Account [[java:com.abc.Account]] {
+	+{static}int CHECKING
+	+{static}int SAVINGS
+	+{static}int MAXI_SAVINGS
+	-int accountType
+	+List<Transaction> transactions
+	+Account(int accountType)
+	+void deposit(double amount)
+	+void withdraw(double amount)
+	+double getBalance()
+	+double interestEarned()
+	+double sumTransactions()
+	-double checkIfTransactionsExist(boolean checkAll)
+	+int getAccountType()
+}
+
+class Bank [[java:com.abc.Bank]] {
+	-List<Customer> customers
+	+Bank()
+	+void addCustomer(Customer customer)
+	+String customerSummary()
+	-String format(int number, String word)
+	+double totalInterestPaid()
+	+String getFirstCustomer()
+	+void transfer(double amount, Account from, Account to)
+}
+
+class Customer [[java:com.abc.Customer]] {
+	-String name
+	-List<Account> accounts
+	+Customer(String name)
+	+String getName()
+	+Customer openAccount(Account account)
+	+int getNumberOfAccounts()
+	+double totalInterestEarned()
+	+String getStatement()
+	-String statementForAccount(Account a)
+	-String toDollars(double d)
+}
+
+class DateProvider [[java:com.abc.DateProvider]] {
+	-{static}DateProvider instance
+	+{static}DateProvider getInstance()
+	+Date now()
+}
+
+class Transaction [[java:com.abc.Transaction]] {
+	+double amount
+	-Date transactionDate
+	+Transaction(double amount)
+}
+@enduml
+@enduml

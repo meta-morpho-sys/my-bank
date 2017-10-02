@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class AccountTest {
 	private static final double DOUBLE_DELTA = 1e-15;
-
+    
 	@Test
 	public void testDeposit() {
 		Account checkingAccount = new Account(Account.CHECKING);
@@ -30,10 +30,29 @@ public class AccountTest {
 			fail("No Exception was thrown");
 		} catch (Exception e) {
 		}
-		
 	}
-	
-	
+
+	@Test
+	public void checkingAccount() {
+		Account checkingAccount = new Account(Account.CHECKING);
+		checkingAccount.deposit(100.0);
+		assertEquals(0.1, checkingAccount.interestEarned(), DOUBLE_DELTA);
+	}
+
+    @Test
+    public void savings_account() {
+        Account checkingAccount = new Account(Account.SAVINGS);
+        checkingAccount.deposit(1500.0);
+        assertEquals(2.0, checkingAccount.interestEarned(), DOUBLE_DELTA);
+    }
+
+    @Test
+    public void maxi_savings_account() {
+        Account checkingAccount = new Account(Account.MAXI_SAVINGS);
+        checkingAccount.deposit(3000.0);
+        assertEquals(170.0, checkingAccount.interestEarned(), DOUBLE_DELTA);
+    }
+    
 	@Test
 	public void testGetAccountType() {
 		Account checkingAccount = new Account(Account.CHECKING);
