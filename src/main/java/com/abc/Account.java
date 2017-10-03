@@ -1,5 +1,7 @@
 package com.abc;
 
+import static java.lang.Math.abs;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +51,11 @@ public class Account {
                     return 1 + (amount-1000) * 0.002;
 
             case MAXI_SAVINGS:
+            	/*  if ( !withdraw in < 10 days)
+            			return amount * 0.05;
+            		else 
+            			return amount * 0.001;
+            	*/	
                 if (amount <= 1000)
                     return amount * 0.02;
                 if (amount <= 2000)
@@ -74,4 +81,33 @@ public class Account {
         return accountType;
     }
 
+    public String getStatement() {
+        String s = "";
+
+       //Translate to pretty account type
+        switch(getAccountType()){
+            case Account.CHECKING:
+                s += "Checking Account\n";
+                break;
+            case Account.SAVINGS:
+                s += "Savings Account\n";
+                break;
+            case Account.MAXI_SAVINGS:
+                s += "Maxi Savings Account\n";
+                break;
+        }
+
+        //Now total up all the transactions
+        double total = 0.0;
+        for (Transaction t : transactions) {
+            s += "  " + (t.amount < 0 ? "withdrawal" : "deposit") + " " + toDollars(t.amount) + "\n";
+            total += t.amount;
+        }
+        s += "Total " + toDollars(total);
+        return s;
+    }
+
+    private String toDollars(double d){
+        return String.format("$%,.2f", abs(d));
+    }
 }
