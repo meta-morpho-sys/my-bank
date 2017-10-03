@@ -100,14 +100,10 @@ public class Account {
         //Now total up all the transactions
         double total = 0.0;
         for (Transaction t : transactions) {
-            s += "  " + (t.amount < 0 ? "withdrawal" : "deposit") + " " + toDollars(t.amount) + "\n";
+            s += "  " + (t.amount < 0 ? "withdrawal" : "deposit") + " " + Utility.toDollars(t.amount) + "\n";
             total += t.amount;
         }
-        s += "Total " + toDollars(total);
+        s += "Total " + Utility.toDollars(total);
         return s;
-    }
-
-    private String toDollars(double d){
-        return String.format("$%,.2f", abs(d));
     }
 }
