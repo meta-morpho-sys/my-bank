@@ -1,13 +1,11 @@
 package com.abc;
 
-import static java.lang.Math.abs;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
 
-    public static final int CHECKING = 0; // TODO ask info about "enumerations" (Enum class) later on
+    public static final int CHECKING = 0;
     public static final int SAVINGS = 1;
     public static final int MAXI_SAVINGS = 2;
 
@@ -51,11 +49,6 @@ public class Account {
                     return 1 + (amount-1000) * 0.002;
 
             case MAXI_SAVINGS:
-            	/*  if ( !withdraw in < 10 days)
-            			return amount * 0.05;
-            		else 
-            			return amount * 0.001;
-            	*/	
                 if (amount <= 1000)
                     return amount * 0.02;
                 if (amount <= 2000)

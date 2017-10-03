@@ -43,6 +43,4 @@ public class Customer {
         statement += "\nTotal In All Accounts " + Utility.toDollars(total);
         return statement;
     }
-    
-    
 }

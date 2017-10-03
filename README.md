@@ -6,12 +6,15 @@ This is a dummy application to be used as part of a software development intervi
 abc-bank
 --------
 
-### Steps I have taken:
-1. Introduced tests for "Account class"
+#### Steps I have taken to resolve the test:
+1. Introduced tests for "Account class", assigned other responsibilities.
 2. Added features for:
-* transfer between two accounts of one customer
-* balance checking
-
+  * transfer between two accounts of one customer (in Bank class)
+  * balance checking (in Account class)
+3. Refactored "Customer" class, reduced Customer responsibility and knowledge about account and transactions.
+4. Refactored Customer Test class by introducing mocks.
+5. Extracted AppTests into a Feature Test file.
+6. Extracted currency formatting function into a Utility class.
 
 ### Current Features
 
@@ -29,5 +32,5 @@ abc-bank
 ### TO-DO
 
 * Introduce correct money handling - Money or BigDecimal.
-* Change **Maxi-Savings accounts** to have an interest rate of 5% assuming no withdrawals in the past 10 days otherwise 0.1%
+* Change **Maxi-Savings accounts** to have an interest rate of 5% assuming no withdrawals in the past 10 days otherwise 0.1%  (started in pseudo-code) 
 * Interest rates should accrue and compound daily (incl. weekends), rates above are per-annum
