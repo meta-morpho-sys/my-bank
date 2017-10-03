@@ -3,8 +3,6 @@ package com.abc;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.management.RuntimeErrorException;
-
 public class Account {
 
     public static final int CHECKING = 0; // TODO ask info about "enumerations" (Enum class) later on

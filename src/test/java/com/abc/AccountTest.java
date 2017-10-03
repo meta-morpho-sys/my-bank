@@ -64,4 +64,6 @@ public class AccountTest {
 		Account checkingAccount = new Account(Account.CHECKING);
 		assertEquals(0.0, checkingAccount.getBalance(), DOUBLE_DELTA);
 	}
+	
+	// TODO @Test for public String getStatement(), which will be moved from Customer to Account class
 }
