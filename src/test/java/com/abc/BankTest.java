@@ -50,7 +50,7 @@ public class BankTest {
     }
 
     @Test
-    public void savings_account() {
+    public void savingsAccount() {
         Bank bank = new Bank();
         Account checkingAccount = new Account(Account.SAVINGS);
         bank.addCustomer(new Customer("Bill").openAccount(checkingAccount));
@@ -61,7 +61,7 @@ public class BankTest {
     }
 
     @Test
-    public void maxi_savings_account() {
+    public void maxiSavingsAccount() {
         Bank bank = new Bank();
         Account checkingAccount = new Account(Account.MAXI_SAVINGS);
         bank.addCustomer(new Customer("Bill").openAccount(checkingAccount));
@@ -70,4 +70,21 @@ public class BankTest {
 
         assertEquals(170.0, bank.totalInterestPaid(), DOUBLE_DELTA);
     }
+    
+    @Test
+    public void firstCustomer() {
+	    	Bank bank = new Bank();
+	    	Customer bill = new Customer("Bill");
+	    	bank.addCustomer(bill);
+	    	
+	    assertEquals(bill, bank.getFirstCustomer());
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void firstCustomerYetNoCustomers() {
+	    	Bank bank = new Bank();
+	    bank.getFirstCustomer();
+    }
+    
+    
 }
