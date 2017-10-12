@@ -21,14 +21,14 @@ public class AccountTest {
 		checkingAccount.deposit(1000.00);
 		checkingAccount.withdraw(400.00);
 		assertEquals(600.00, checkingAccount.getBalance(), DOUBLE_DELTA);
-		
-		try {
-			checkingAccount.withdraw(601.00);
-			fail("No Exception was thrown");
-		} catch (Exception e) {
-		}
 	}
 
+	@Test(expected = RuntimeException.class)
+	public void withdrawNoBalanceMessage() {
+		Account checkingAccount = new Account(Account.CHECKING);
+		checkingAccount.withdraw(400.00);
+	}
+	
 	@Test
 	public void checkingAccount() {
 		Account checkingAccount = new Account(Account.CHECKING);
