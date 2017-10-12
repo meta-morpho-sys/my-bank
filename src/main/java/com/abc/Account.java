@@ -29,7 +29,7 @@ public class Account {
 	    if (amount <= 0) {
 	        throw new IllegalArgumentException("amount must be greater than zero");
 	    } else if (amount > getBalance()) {
-//			throw new RuntimeException("Insufficient balance");
+			throw new RuntimeException("Insufficient balance");
 		} else {
 	        transactions.add(new Transaction(-amount));
 	    }
